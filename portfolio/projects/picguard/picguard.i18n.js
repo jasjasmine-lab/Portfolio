@@ -1,0 +1,105 @@
+/* PicGuard bilingual copy (CN/EN) */
+window.PICGUARD_I18N = {
+  zh: {
+    meta: {
+      title: "PicGuard｜扩散模型版权保护的主动对抗防御",
+      description: "PicGuard：通过主动对抗扰动降低扩散模型对图像风格/内容的复刻能力（中英双语项目页）",
+    },
+    nav: {
+      overview: "概览",
+      results: "结果",
+      method: "方法",
+      sources: "材料",
+      theme_light: "亮色",
+      theme_dark: "暗色",
+      lang: "EN",
+    },
+    hero: {
+      title: "PicGuard",
+      subtitle: "Active Adversarial Protection for Diffusion Models",
+      tagline: "对图像加入“几乎不可察觉”的扰动，降低扩散模型对风格与内容的复刻能力。",
+    },
+    kpi: {
+      k1_label: "目标场景",
+      k1_value: "扩散模型风格/内容复刻风险",
+      k2_label: "核心手段",
+      k2_value: "对抗扰动 + 梯度上升",
+      k3_label: "关键技术",
+      k3_value: "蒙特卡洛估计",
+      k4_label: "验证方式",
+      k4_value: "LoRA 训练与风格稳定性测试",
+      k5_label: "交付形态",
+      k5_value: "网页平台（上传→生成→对比/下载）",
+    },
+    section: {
+      overview_title: "概览",
+      value:
+        "价值：生成式扩散模型降低了创作门槛，也带来“无需授权即可复刻风格/内容”的现实风险。PicGuard 将版权保护前移到图像发布前，通过对抗扰动干扰模型特征提取，使复刻成本上升、复刻质量下降，从而为创作者提供可操作的主动防护手段。",
+      highlights: "要点",
+      highlights_items: [
+        "任务：生成保护后的图像，在视觉上保持一致，同时对扩散模型的复刻过程产生干扰。",
+        "方法：对抗样本框架 + 蒙特卡洛估计近似梯度 + Sign Gradient Ascent 迭代优化。",
+        "约束：在扰动预算内优化，尽量保持图像语义与观感不变。",
+        "工程：网页端一键上传与生成，提供处理前后对比与验证展示。",
+      ],
+      results_title: "结果展示",
+      gallery_title: "定性对比（节选）",
+      figures_title: "关键示意图（节选）",
+      method_title: "方法细节",
+      sources_title: "材料与链接",
+      sources_items: [
+        { label: "报告（Word）", href: "./report.html" },
+      ],
+    },
+  },
+  en: {
+    meta: {
+      title: "PicGuard | Active Adversarial Protection",
+      description: "PicGuard: proactive adversarial protection against diffusion-model style/content imitation (bilingual page).",
+    },
+    nav: {
+      overview: "Overview",
+      results: "Results",
+      method: "Method",
+      sources: "Sources",
+      theme_light: "Light",
+      theme_dark: "Dark",
+      lang: "中文",
+    },
+    hero: {
+      title: "PicGuard",
+      subtitle: "Active Adversarial Protection for Diffusion Models",
+      tagline: "Add nearly imperceptible perturbations to reduce diffusion-model imitation of style and content.",
+    },
+    kpi: {
+      k1_label: "Use case",
+      k1_value: "Diffusion-model imitation risk",
+      k2_label: "Core idea",
+      k2_value: "Adversarial perturbation + gradient ascent",
+      k3_label: "Key technique",
+      k3_value: "Monte Carlo estimation",
+      k4_label: "Validation",
+      k4_value: "LoRA training & style stability tests",
+      k5_label: "Deliverable",
+      k5_value: "Web workflow (upload → protect → compare/download)",
+    },
+    section: {
+      overview_title: "Overview",
+      value:
+        "Value: diffusion models democratize creation but also enable unauthorized imitation of style/content. PicGuard shifts protection to the pre-release stage by perturbing images to disrupt feature extraction, making imitation harder and less faithful—providing a practical, proactive defense for creators.",
+      highlights: "Key points",
+      highlights_items: [
+        "Goal: produce protected images that look similar to the originals while interfering with diffusion-model imitation.",
+        "Method: adversarial framework + Monte Carlo gradient approximation + iterative Sign Gradient Ascent.",
+        "Constraint: optimize under a perturbation budget to preserve semantics and visual quality.",
+        "Engineering: a web UI for one-click upload, protection, and visual comparison/verification.",
+      ],
+      results_title: "Results",
+      gallery_title: "Qualitative comparison (excerpt)",
+      figures_title: "Key diagrams (excerpt)",
+      method_title: "Method details",
+      sources_title: "Materials",
+      sources_items: [{ label: "Report (Word)", href: "./report.html" }],
+    },
+  },
+};

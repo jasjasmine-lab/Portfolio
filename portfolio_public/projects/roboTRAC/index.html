@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="RoboTRAC：基于专利文本语义与结构化特征的临床转化潜力分级预测（中英双语项目页）" />
+    <title>RoboTRAC｜专利到临床转化潜力预测</title>
+    <link rel="stylesheet" href="./roboTRAC.css" />
+  </head>
+  <body>
+    <div class="grid-noise" aria-hidden="true"></div>
+
+    <header>
+      <div class="wrap">
+        <div class="topbar">
+          <div class="brand">
+            <div class="name">RoboTRAC</div>
+            <div class="tag">Patent → Clinic</div>
+          </div>
+
+          <nav aria-label="section navigation">
+            <a href="#overview" data-i18n="nav.overview"></a>
+            <a href="#results" data-i18n="nav.results"></a>
+            <a href="#method" data-i18n="nav.method"></a>
+            <a href="#reproducibility" data-i18n="nav.reproducibility"></a>
+            <a href="#sources" data-i18n="nav.sources"></a>
+            <button class="btn" id="langBtn" type="button">EN</button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero fade-in" id="top">
+        <div class="subtitle" data-i18n="hero.subtitle"></div>
+        <h1 data-i18n="hero.title"></h1>
+        <div class="tagline" data-i18n="hero.tagline"></div>
+
+        <div class="kpi" aria-label="key metrics">
+          <div class="card">
+            <div class="label" data-i18n="kpi.k1_label"></div>
+            <div class="value" data-i18n="kpi.k1_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k2_label"></div>
+            <div class="value" data-i18n="kpi.k2_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k3_label"></div>
+            <div class="value" data-i18n="kpi.k3_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k4_label"></div>
+            <div class="value" data-i18n="kpi.k4_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k5_label"></div>
+            <div class="value" data-i18n="kpi.k5_value"></div>
+          </div>
+          <div class="card">
+            <div class="label">Repo-ready</div>
+            <div class="value">CLI + XLSX I/O</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="overview">
+        <h2 data-i18n="section.overview_title"></h2>
+        <h3 style="margin: 0 0 6px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase" data-i18n="section.highlights"></h3>
+        <ul class="list" data-i18n-list="section.highlights_items"></ul>
+
+        <figure class="figure" style="margin-top: 16px">
+          <img src="../../assets/roboTRAC/figures/fig1_protocol.png" alt="RoboTRAC protocol figure" loading="lazy" />
+          <figcaption data-i18n="blocks.fig1_caption"></figcaption>
+        </figure>
+      </section>
+
+      <section class="section fade-in" id="results">
+        <h2 data-i18n="section.results_title"></h2>
+
+        <h3 style="margin: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase" data-i18n="section.table1_title"></h3>
+        <div class="table-wrap" role="region" aria-label="Table 1">
+          <table>
+            <thead>
+              <tr>
+                <th>Conversion Potential</th>
+                <th>Patent Count</th>
+                <th>Avg. Conversion Time (year)</th>
+                <th>Matched Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Q1 (High)</td>
+                <td>2259</td>
+                <td>4.83826</td>
+                <td>37010</td>
+              </tr>
+              <tr>
+                <td>Q2 (Moderately High)</td>
+                <td>2259</td>
+                <td>4.269505</td>
+                <td>18395</td>
+              </tr>
+              <tr>
+                <td>Q3 (Moderate)</td>
+                <td>2258</td>
+                <td>4.015542</td>
+                <td>8626</td>
+              </tr>
+              <tr>
+                <td>Q4 (Low)</td>
+                <td>2259</td>
+                <td>3.955562</td>
+                <td>4323</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="height: 14px"></div>
+
+        <h3 style="margin: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase" data-i18n="section.table3_title"></h3>
+        <div class="table-wrap" role="region" aria-label="Table 3">
+          <table>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Class</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1</th>
+                <th>AUC-ROC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Binary</td>
+                <td>No Product Conversion</td>
+                <td>90%</td>
+                <td>89%</td>
+                <td>90%</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Binary</td>
+                <td>Have Product Conversion</td>
+                <td>68%</td>
+                <td>71%</td>
+                <td>70%</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>4-Class</td>
+                <td>Q1 (High)</td>
+                <td>0.5564</td>
+                <td>0.6785</td>
+                <td>0.6114</td>
+                <td>0.8390</td>
+              </tr>
+              <tr>
+                <td>4-Class</td>
+                <td>Q2 (Moderately High)</td>
+                <td>0.5601</td>
+                <td>-</td>
+                <td>0.5018</td>
+                <td>0.7490</td>
+              </tr>
+              <tr>
+                <td>4-Class</td>
+                <td>Q3 (Moderate)</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>0.7287</td>
+              </tr>
+              <tr>
+                <td>4-Class</td>
+                <td>Q4 (Low)</td>
+                <td>0.5221</td>
+                <td>0.5233</td>
+                <td>0.5227</td>
+                <td>0.7844</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="method">
+        <h2 data-i18n="section.method_title"></h2>
+
+        <div class="cols">
+          <div>
+            <h3 style="margin: 0 0 6px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase" data-i18n="blocks.features_title"></h3>
+            <ul class="list" data-i18n-list="blocks.features_list"></ul>
+
+            <div style="height: 10px"></div>
+
+            <h3 style="margin: 0 0 6px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase" data-i18n="blocks.model_title"></h3>
+            <ul class="list" data-i18n-list="blocks.model_list"></ul>
+
+            <div class="nb" aria-label="notebook style code">
+              <div class="cell">
+                <div class="prompt">In&nbsp;[1]</div>
+                <pre><code>from sentence_transformers import SentenceTransformer
+
+# BGE embedding on concatenated title + abstract
+model = SentenceTransformer("BAAI/bge-large-zh-v1.5", device=device)
+texts = (df["title"].fillna("").astype(str) + " " + df["abstract"].fillna("").astype(str)).tolist()
+embs = model.encode(texts, batch_size=32, normalize_embeddings=True)</code></pre>
+              </div>
+
+              <div class="cell">
+                <div class="prompt">In&nbsp;[2]</div>
+                <pre><code># LightGBM 4-class grading with class balancing
+params = {
+  "objective": "multiclass",
+  "num_class": 4,
+  "boosting_type": "gbdt",
+  "class_weight": "balanced",
+  "learning_rate": 0.03,
+  "num_leaves": 31,
+  "seed": 42,
+}</code></pre>
+              </div>
+
+              <div class="cell out">
+                <div class="prompt">Out&nbsp;[2]</div>
+                <pre><code># Outputs
+pred_label: 低转化 / 中转化 / 偏高转化 / 高转化
+prob_low, prob_med, prob_high_mid, prob_high
+screening_score = prob_med + prob_high_mid + prob_high</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <aside class="callout">
+            <h3 data-i18n="blocks.io_title"></h3>
+            <p style="margin-top: 10px" data-i18n="blocks.io_in"></p>
+            <p style="margin-top: 10px" data-i18n="blocks.io_out"></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="reproducibility">
+        <h2 data-i18n="section.reproducibility_title"></h2>
+
+        <div class="codebox">
+          <div class="bar">
+            <div class="title" data-i18n="blocks.cmd_train"></div>
+            <button class="btn" data-copy="#cmdTrain" type="button"></button>
+          </div>
+          <pre id="cmdTrain"><code>python patent_multi_predictor.py --mode train --input path/to/data.xlsx --model my_model.pkl --device cuda</code></pre>
+        </div>
+
+        <div class="codebox" style="margin-top: 14px">
+          <div class="bar">
+            <div class="title" data-i18n="blocks.cmd_predict"></div>
+            <button class="btn" data-copy="#cmdPredict" type="button"></button>
+          </div>
+          <pre id="cmdPredict"><code>python patent_multi_predictor.py --mode predict --input path/to/new_data.xlsx --model my_model.pkl --output results.xlsx --device cuda</code></pre>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="sources">
+        <h2 data-i18n="section.sources_title"></h2>
+        <div class="links" data-i18n-links="section.sources_items"></div>
+      </section>
+    </main>
+
+    <script src="./roboTRAC.i18n.js"></script>
+    <script src="./roboTRAC.js"></script>
+  </body>
+</html>

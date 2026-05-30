@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RoboTRAC | requirements</title>
+    <link rel="stylesheet" href="./roboTRAC.css" />
+    <style>
+      body{background: linear-gradient(180deg, var(--bg), var(--bg));}
+      header{position: static;}
+      .topline{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+      .crumb{font-family: var(--serif); font-size: 22px; letter-spacing: -.01em;}
+      .sub{color: var(--muted); font-size: 13px;}
+    </style>
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("site_theme");
+          if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="topbar topline">
+          <div>
+            <div class="crumb">RoboTRAC / requirements</div>
+            <div class="sub">requirements.txt</div>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
+            <a class="btn" href="../../index.html" aria-label="返回导航页" title="返回导航页">← 导航</a>
+            <a class="btn" href="./index.html">← Back</a>
+            <button class="btn" id="themeBtn" type="button">Dark</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap" style="padding-top:18px;">
+      <section class="section" style="margin-top:0;">
+        <div class="nb" aria-label="requirements notebook style">
+          <div class="cell">
+            <div class="prompt">In&nbsp;[1]</div>
+            <pre id="req"><code>pandas&gt;=1.3.0
+numpy&gt;=1.21.0
+lightgbm&gt;=3.3.0
+scikit-learn&gt;=1.0.0
+sentence-transformers&gt;=2.2.0
+openpyxl&gt;=3.0.0
+joblib&gt;=1.1.0
+torch&gt;=1.10.0</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var btn = document.getElementById("themeBtn");
+        if (!btn) return;
+        function currentLabel() {
+          var cur = document.documentElement.getAttribute("data-theme") || "";
+          if (!cur) {
+            var sysDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+            btn.textContent = sysDark ? "Dark" : "Light";
+            return;
+          }
+          btn.textContent = cur === "dark" ? "Dark" : "Light";
+        }
+        function toggle() {
+          var cur = document.documentElement.getAttribute("data-theme") || "";
+          if (!cur) {
+            var sysDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+            cur = sysDark ? "dark" : "light";
+          }
+          var next = cur === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          try { localStorage.setItem("site_theme", next); } catch (e) {}
+          currentLabel();
+        }
+        btn.addEventListener("click", toggle);
+        currentLabel();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Wellbore Geology Prediction：井眼地质（TVT）预测项目页（中英双语）" />
+    <title>Wellbore Geology Prediction｜井眼地质预测</title>
+    <!-- Share the same visual system with RoboTRAC -->
+    <link rel="stylesheet" href="../roboTRAC/roboTRAC.css" />
+    <link rel="stylesheet" href="./wellbore.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("site_theme");
+          if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="grid-noise" aria-hidden="true"></div>
+
+    <header>
+      <div class="wrap">
+        <div class="topbar">
+          <div class="brand">
+            <div class="name">Wellbore Geology Prediction</div>
+            <div class="tag" data-i18n="hero.subtitle"></div>
+          </div>
+
+          <nav aria-label="section navigation">
+            <a class="btn" href="../../index.html" aria-label="返回导航页" title="返回导航页">← 导航</a>
+            <a href="#overview" data-i18n="nav.overview"></a>
+            <a href="#results" data-i18n="nav.results"></a>
+            <a href="#method" data-i18n="nav.method"></a>
+            <button class="btn" id="themeBtn" type="button">Dark</button>
+            <button class="btn" id="langBtn" type="button">EN</button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero fade-in" id="top">
+        <div class="subtitle" data-i18n="hero.subtitle"></div>
+        <h1 data-i18n="hero.title"></h1>
+        <div class="tagline" data-i18n="hero.tagline"></div>
+
+        <div class="kpi" aria-label="key metrics">
+          <div class="card">
+            <div class="label" data-i18n="kpi.lb_label"></div>
+            <div class="value mono" data-field="lb_rmse">—</div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.oof_label"></div>
+            <div class="value mono" data-field="oof_rmse">—</div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.wells_label"></div>
+            <div class="value mono" data-field="n_wells">—</div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.features_label"></div>
+            <div class="value mono" data-field="n_features">—</div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.train_label"></div>
+            <div class="value mono" data-field="n_train_samples">—</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="overview">
+        <h2 data-i18n="section.overview_title"></h2>
+        <p class="lead value" data-i18n="section.value"></p>
+        <h3 class="minor-title" data-i18n="section.highlights"></h3>
+        <ul class="list" data-i18n-list="section.highlights_items"></ul>
+      </section>
+
+      <section class="section fade-in" id="results">
+        <h2 data-i18n="section.results_title"></h2>
+        <p class="lead" data-i18n="section.results_lead"></p>
+
+        <div class="figure-grid" aria-label="key figures">
+          <div class="figure-card">
+            <img src="../../assets/wellbore-geo/figures/model-comparison.png" alt="Model RMSE comparison" loading="lazy" />
+            <div class="cap" data-i18n="figures.model_comparison"></div>
+          </div>
+          <div class="figure-card">
+            <img src="../../assets/wellbore-geo/figures/hc-ensemble.png" alt="Hill climbing ensemble" loading="lazy" />
+            <div class="cap" data-i18n="figures.hc_ensemble"></div>
+          </div>
+          <div class="figure-card">
+            <img src="../../assets/wellbore-geo/figures/per-well.png" alt="Per well stats" loading="lazy" />
+            <div class="cap" data-i18n="figures.per_well"></div>
+          </div>
+          <div class="figure-card">
+            <img src="../../assets/wellbore-geo/figures/best-worst.png" alt="Best vs worst wells" loading="lazy" />
+            <div class="cap" data-i18n="figures.best_worst"></div>
+          </div>
+          <div class="figure-card">
+            <img src="../../assets/wellbore-geo/figures/feature-importance.png" alt="Feature importance" loading="lazy" />
+            <div class="cap" data-i18n="figures.feature_importance"></div>
+          </div>
+          <div class="figure-card">
+            <img src="../../assets/wellbore-geo/figures/feature-correlation.png" alt="Model correlation" loading="lazy" />
+            <div class="cap" data-i18n="figures.feature_correlation"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="method">
+        <h2 data-i18n="section.method_title"></h2>
+        <div class="cols">
+          <div>
+            <h3 class="minor-title" data-i18n="section.pipeline_title"></h3>
+            <div class="nb" aria-label="pipeline">
+              <div class="cell">
+                <div class="prompt">Step</div>
+                <pre><code data-i18n="method.pipeline_code"></code></pre>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./wellbore.i18n.js"></script>
+    <script src="./wellbore.js"></script>
+  </body>
+</html>

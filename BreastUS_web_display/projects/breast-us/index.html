@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Breast US：BUSBRA→BUSI 跨域设置下，分类+分割（含边缘头）的双主干解耦网络展示页（中英双语）"
+    />
+    <title>乳腺超声｜跨域分类+分割的双主干解耦学习</title>
+    <link rel="stylesheet" href="../roboTRAC/roboTRAC.css" />
+    <link rel="stylesheet" href="./breastus.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("site_theme");
+          if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="grid-noise" aria-hidden="true"></div>
+
+    <header>
+      <div class="wrap">
+        <div class="topbar">
+          <div class="brand">
+            <div class="name">Breast US</div>
+            <div class="tag">BUSBRA → BUSI</div>
+          </div>
+
+          <nav aria-label="section navigation">
+            <a href="#overview" data-i18n="nav.overview"></a>
+            <a href="#results" data-i18n="nav.results"></a>
+            <a href="#method" data-i18n="nav.method"></a>
+            <a href="#sources" data-i18n="nav.sources"></a>
+            <button class="btn" id="themeBtn" type="button">Dark</button>
+            <button class="btn" id="langBtn" type="button">EN</button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero fade-in" id="top">
+        <div class="subtitle" data-i18n="hero.subtitle"></div>
+        <h1 data-i18n="hero.title"></h1>
+        <div class="tagline" data-i18n="hero.tagline"></div>
+
+        <div class="kpi" aria-label="key metrics">
+          <div class="card">
+            <div class="label" data-i18n="kpi.k1_label"></div>
+            <div class="value" data-i18n="kpi.k1_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k2_label"></div>
+            <div class="value" data-i18n="kpi.k2_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k3_label"></div>
+            <div class="value" data-i18n="kpi.k3_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k4_label"></div>
+            <div class="value" data-i18n="kpi.k4_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k5_label"></div>
+            <div class="value" data-i18n="kpi.k5_value"></div>
+          </div>
+          <div class="card">
+            <div class="label">Outputs</div>
+            <div class="value">mask + edge + class prob</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="overview">
+        <h2 data-i18n="section.overview_title"></h2>
+        <p class="lead value" data-i18n="section.value"></p>
+        <h3
+          style="margin: 0 0 6px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase"
+          data-i18n="section.highlights"
+        ></h3>
+        <ul class="list" data-i18n-list="section.highlights_items"></ul>
+      </section>
+
+      <section class="section fade-in" id="results">
+        <h2 data-i18n="section.results_title"></h2>
+
+        <h3
+          style="margin: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase"
+          data-i18n="section.figures_title"
+        ></h3>
+        <div class="figure-grid" aria-label="key figures">
+          <figure class="figure-card">
+            <img src="../../assets/breast-us/figures/architecture.svg" alt="Architecture diagram" loading="lazy" />
+            <figcaption class="cap">Architecture (dual-backbone, dual-task)</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img src="../../assets/breast-us/figures/comparison.svg" alt="Comparison chart" loading="lazy" />
+            <figcaption class="cap">Dual-task metrics + trainable parameters</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img src="../../assets/breast-us/figures/comparison_table.svg" alt="Comparison table" loading="lazy" />
+            <figcaption class="cap">Model comparison table (BUSBRA → BUSI)</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img
+              src="../../assets/breast-us/figures/architecture_compact.svg"
+              alt="Compact architecture overview"
+              loading="lazy"
+            />
+            <figcaption class="cap">Compact layout</figcaption>
+          </figure>
+        </div>
+
+        <div style="height: 14px"></div>
+
+        <h3
+          style="margin: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase"
+          data-i18n="section.gallery_title"
+        ></h3>
+        <div class="gallery" aria-label="qualitative gallery">
+          <div class="item">
+            <img src="../../assets/breast-us/gallery/segmentation_results.png" alt="Segmentation results" loading="lazy" />
+            <div class="cap">Segmentation qualitative results (BUSI)</div>
+          </div>
+          <div class="item">
+            <img src="../../assets/breast-us/gallery/multi_comparison.png" alt="Multi-sample comparison" loading="lazy" />
+            <div class="cap">Multi-sample segmentation comparison</div>
+          </div>
+          <div class="item">
+            <img src="../../assets/breast-us/gallery/attention_heatmap.png" alt="Attention heatmap" loading="lazy" />
+            <div class="cap">Attention heatmap + segmentation prediction</div>
+          </div>
+          <div class="item">
+            <img src="../../assets/breast-us/gallery/roc_comparison.png" alt="ROC comparison" loading="lazy" />
+            <div class="cap">ROC curves (cross-domain classification)</div>
+          </div>
+          <div class="item">
+            <img src="../../assets/breast-us/gallery/param_efficiency.png" alt="Parameter efficiency" loading="lazy" />
+            <div class="cap">Parameter efficiency</div>
+          </div>
+          <div class="item">
+            <img src="../../assets/breast-us/gallery/ablation_seghead.png" alt="Ablation" loading="lazy" />
+            <div class="cap">Ablation</div>
+          </div>
+          <div class="item">
+            <img src="../../assets/breast-us/gallery/radar_comparison.png" alt="Radar comparison" loading="lazy" />
+            <div class="cap">Radar comparison</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="method">
+        <h2 data-i18n="section.method_title"></h2>
+
+        <div class="cols">
+          <div>
+            <h3 style="margin: 0 0 6px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase">
+              Notebook
+            </h3>
+
+            <div class="nb" aria-label="notebook style code">
+              <div class="cell">
+                <div class="prompt">In&nbsp;[1]</div>
+                <pre><code># Two-branch decoupling
+# cls: ViT-B/16 (frozen) → MLP → {benign, malignant}
+# seg: ViT-B/16 encoder (weight-copied) → UNet decoder → {mask, edge}
+# fine-tune: last 4 ViT blocks (8–11) + full UNet decoder</code></pre>
+              </div>
+              <div class="cell">
+                <div class="prompt">In&nbsp;[2]</div>
+                <pre><code># IoU loss (as used in the report)
+# L_seg = 0.3 * BCE + 0.7 * (1 - IoU)
+# IoU = (sum(p*y) + eps) / (sum(p + y - p*y) + eps)</code></pre>
+              </div>
+              <div class="cell">
+                <div class="prompt">In&nbsp;[3]</div>
+                <pre><code># Multi-task objective
+# L = L_seg + 0.1 * L_edge</code></pre>
+              </div>
+              <div class="cell out">
+                <div class="prompt">Out&nbsp;[3]</div>
+                <pre><code>Outputs:
+- class_prob (benign/malignant)
+- mask_prob  (lesion area)
+- edge_prob  (boundary map)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="sources">
+        <h2 data-i18n="section.sources_title"></h2>
+        <div class="links" data-i18n-links="section.sources_items"></div>
+      </section>
+    </main>
+
+    <script src="./breastus.i18n.js"></script>
+    <script src="./breastus.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html><head><style>body{margin:0;background:#fff;}</style></head>
+<body>
+<div style="padding:20px;">
+<h2>Test 1: Simple rect</h2>
+<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="180" height="80" fill="#3b82f6" rx="10"/>
+  <text x="100" y="55" text-anchor="middle" font-family="sans-serif" font-size="14" fill="white">Hello SVG</text>
+</svg>
+
+<h2>Test 2: Our SVG via embed</h2>
+<embed src="http://localhost:8765/portfolio/assets/breast-us/figures/vitunet_clean.svg" type="image/svg+xml" width="900" height="1500"/>
+
+<h2>Test 3: Our SVG via object</h2>
+<object data="http://localhost:8765/portfolio/assets/breast-us/figures/vitunet_clean.svg" type="image/svg+xml" width="900" height="1500"></object>
+</div>
+</body></html>

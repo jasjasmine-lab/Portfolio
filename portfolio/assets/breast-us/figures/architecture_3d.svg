@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1500" viewBox="0 0 1800 1500" role="img">
+<defs>
+  <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+    <stop offset="0%" stop-color="#f8fafc"/>
+    <stop offset="100%" stop-color="#edf2f7"/>
+  </linearGradient>
+  <filter id="ds" x="-6%" y="-6%" width="112%" height="120%">
+    <feDropShadow dx="0" dy="4" stdDeviation="7" flood-color="#0f172a" flood-opacity="0.09"/>
+  </filter>
+</defs>
+<rect x="0.0" y="0.0" width="1800.0" height="1500.0" fill="url(#bg)"/>
+<text x="900.0" y="44.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="800" font_size="28px" fill="#0f172a">ViT Weight Replication + UNet Decoder</text>
+<text x="900.0" y="70.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="14px" fill="#64748b">Cross-domain Breast Ultrasound Segmentation  ·  BUSBRA → BUSI</text>
+<rect x="320.0" y="92.0" width="12.0" height="12.0" rx="2" fill="#6366f1" stroke="none"/>
+<text x="337.0" y="102.0" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="600" font_size="10.5px" fill="#475569">Input</text>
+<rect x="389.0" y="92.0" width="12.0" height="12.0" rx="2" fill="#3b82f6" stroke="none"/>
+<text x="406.0" y="102.0" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="600" font_size="10.5px" fill="#475569">Cls Branch</text>
+<rect x="493.0" y="92.0" width="12.0" height="12.0" rx="2" fill="#10b981" stroke="none"/>
+<text x="510.0" y="102.0" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="600" font_size="10.5px" fill="#475569">Seg Branch</text>
+<rect x="597.0" y="92.0" width="12.0" height="12.0" rx="2" fill="#14b8a6" stroke="none"/>
+<text x="614.0" y="102.0" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="600" font_size="10.5px" fill="#475569">UNet Decoder</text>
+<rect x="715.0" y="92.0" width="12.0" height="12.0" rx="2" fill="#8b5cf6" stroke="none"/>
+<text x="732.0" y="102.0" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="600" font_size="10.5px" fill="#475569">Output Heads</text>
+<rect x="833.0" y="92.0" width="12.0" height="12.0" rx="2" fill="#94a3b8" stroke="none"/>
+<text x="850.0" y="102.0" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="600" font_size="10.5px" fill="#475569">Frozen</text>
+<!-- Input -->
+<polygon points="680.0,128.0 1120.0,128.0 1134.0,114.0 694.0,114.0" fill="#818cf8" stroke="#c7d2fe" stroke_width="1.2"/>
+<polygon points="1120.0,128.0 1134.0,114.0 1134.0,186.0 1120.0,200.0" fill="#4f46e5" stroke="#c7d2fe" stroke_width="1.2"/>
+<rect x="680.0" y="128.0" width="440.0" height="72.0" rx="8" fill="#6366f1" stroke="#c7d2fe" stroke_width="1.2"/>
+<text x="900.0" y="158.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="16px" fill="#ffffff">Breast Ultrasound Image</text>
+<text x="900.0" y="176.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="12px" fill="rgba(255,255,255,0.90)">resize → 224 × 224 × 3</text>
+<line x1="900.0" y1="200.0" x2="900.0" y2="231.0" style="stroke:#475569;stroke-width:2.4;stroke-linecap:round"/>
+<polygon points="900.0,236.0 894.1,227.9 905.9,227.9" fill="#475569" stroke="none"/>
+<polygon points="680.0,236.0 1120.0,236.0 1132.0,224.0 692.0,224.0" fill="#64748b" stroke="#94a3b8" stroke_width="1.2"/>
+<polygon points="1120.0,236.0 1132.0,224.0 1132.0,278.0 1120.0,290.0" fill="#334155" stroke="#94a3b8" stroke_width="1.2"/>
+<rect x="680.0" y="236.0" width="440.0" height="54.0" rx="6" fill="#475569" stroke="#94a3b8" stroke_width="1.2"/>
+<text x="900.0" y="257.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="14px" fill="#ffffff">Patch Embedding</text>
+<text x="900.0" y="274.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="11px" fill="rgba(255,255,255,0.90)">16×16 patches → 196 tokens × 768-d</text>
+<line x1="900.0" y1="290.0" x2="900.0" y2="304.0" style="stroke:#334155;stroke-width:2.2;stroke-linecap:round"/>
+<circle cx="900.0" cy="310.0" r="7" fill="#0f172a" opacity="0.85"/>
+<rect x="120.0" y="340.0" width="440.0" height="28.0" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke_width="1"/>
+<text x="340.0" y="360.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="12px" fill="#1e40af">Classification Branch (ViT-B/16 frozen)</text>
+<rect x="1040.0" y="340.0" width="560.0" height="28.0" rx="10" fill="#ecfdf5" stroke="#86efac" stroke_width="1"/>
+<text x="1320.0" y="360.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="12px" fill="#166534">Segmentation Branch (ViT-B/16 weight-copy + UNet)</text>
+<path d="M900.0,310 C900.0,350 280.0,340 280.0,380" style="stroke:#3b82f6;stroke-width:2.5;fill:none;stroke-linecap:round"/>
+<polygon points="280.0,384.0 274.0,373.0 286.0,373.0" fill="#3b82f6" stroke="none"/>
+<path d="M900.0,310 C900.0,350 1200.0,340 1200.0,380" style="stroke:#10b981;stroke-width:2.5;fill:none;stroke-linecap:round"/>
+<polygon points="1200.0,384.0 1194.0,373.0 1206.0,373.0" fill="#10b981" stroke="none"/>
+<!-- CLS ViT Encoder -->
+<polygon points="120.0,380.0 440.0,380.0 456.0,364.0 136.0,364.0" fill="#60a5fa" stroke="#bfdbfe" stroke_width="1.2"/>
+<polygon points="440.0,380.0 456.0,364.0 456.0,744.0 440.0,760.0" fill="#2563eb" stroke="#bfdbfe" stroke_width="1.2"/>
+<rect x="120.0" y="380.0" width="320.0" height="380.0" rx="8" fill="#3b82f6" stroke="#bfdbfe" stroke_width="1.2"/>
+<text x="134.0" y="399.8" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 0</text>
+<text x="426.0" y="399.8" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="411.7" x2="436.0" y2="411.7" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="431.5" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 1</text>
+<text x="426.0" y="431.5" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="443.3" x2="436.0" y2="443.3" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="463.2" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 2</text>
+<text x="426.0" y="463.2" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="475.0" x2="436.0" y2="475.0" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="494.8" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 3</text>
+<text x="426.0" y="494.8" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="506.7" x2="436.0" y2="506.7" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="526.5" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 4</text>
+<text x="426.0" y="526.5" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="538.3" x2="436.0" y2="538.3" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="558.2" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 5</text>
+<text x="426.0" y="558.2" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="570.0" x2="436.0" y2="570.0" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="589.8" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 6</text>
+<text x="426.0" y="589.8" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="601.7" x2="436.0" y2="601.7" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="621.5" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 7</text>
+<text x="426.0" y="621.5" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="633.3" x2="436.0" y2="633.3" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="653.2" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 8</text>
+<text x="426.0" y="653.2" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="665.0" x2="436.0" y2="665.0" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="684.8" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 9</text>
+<text x="426.0" y="684.8" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="696.7" x2="436.0" y2="696.7" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="716.5" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 10</text>
+<text x="426.0" y="716.5" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<line x1="124.0" y1="728.3" x2="436.0" y2="728.3" style="stroke:rgba(255,255,255,0.25);stroke-width:0.8"/>
+<text x="134.0" y="748.2" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.8)">Block 11</text>
+<text x="426.0" y="748.2" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.55)">MSA + MLP</text>
+<rect x="464.0" y="554.0" width="76.0" height="28.0" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke_width="1"/>
+<text x="502.0" y="573.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="800" font_size="11px" fill="#1e40af" letter_spacing="0.1em">FROZEN</text>
+<line x1="462.0" y1="400.0" x2="462.0" y2="740.0" style="stroke:#93c5fd;stroke-width:1.5;stroke-dasharray:4 3"/>
+<text x="280.0" y="362.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="600" font_size="12px" fill="#1e40af">ViT-B/16 Encoder · 768-d · 12 blocks</text>
+<!-- SEG ViT Encoder -->
+<polygon points="1040.0,380.0 1360.0,380.0 1376.0,364.0 1056.0,364.0" fill="#b0bec5" stroke="#cbd5e1" stroke_width="1.2"/>
+<polygon points="1360.0,380.0 1376.0,364.0 1376.0,617.3 1360.0,633.3" fill="#64748b" stroke="#cbd5e1" stroke_width="1.2"/>
+<rect x="1040.0" y="380.0" width="320.0" height="253.3" rx="8" fill="#94a3b8" stroke="#cbd5e1" stroke_width="1.2"/>
+<polygon points="1040.0,633.3 1360.0,633.3 1376.0,617.3 1056.0,617.3" fill="#34d399" stroke="#a7f3d0" stroke_width="1.2"/>
+<polygon points="1360.0,633.3 1376.0,617.3 1376.0,744.0 1360.0,760.0" fill="#059669" stroke="#a7f3d0" stroke_width="1.2"/>
+<rect x="1040.0" y="633.3" width="320.0" height="126.7" rx="8" fill="#10b981" stroke="#a7f3d0" stroke_width="1.2"/>
+<text x="1054.0" y="399.8" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.75)">Block 0</text>
+<text x="1346.0" y="399.8" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.45)">MSA + MLP</text>
+<line x1="1044.0" y1="411.7" x2="1356.0" y2="411.7" style="stroke:rgba(255,255,255,0.2);stroke-width:0.7"/>
+<text x="1054.0" y="431.5" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.75)">Block 1</text>
+<text x="1346.0" y="431.5" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.45)">MSA + MLP</text>
+<line x1="1044.0" y1="443.3" x2="1356.0" y2="443.3" style="stroke:rgba(255,255,255,0.2);stroke-width:0.7"/>
+<text x="1054.0" y="463.2" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.75)">Block 2</text>
+<text x="1346.0" y="463.2" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.45)">MSA + MLP</text>
+<line x1="1044.0" y1="475.0" x2="1356.0" y2="475.0" style="stroke:rgba(255,255,255,0.2);stroke-width:0.7"/>
+<text x="1054.0" y="494.8" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.75)">Block 3</text>
+<text x="1346.0" y="494.8" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.45)">MSA + MLP</text>
+<line x1="1044.0" y1="506.7" x2="1356.0" y2="506.7" style="stroke:rgba(255,255,255,0.2);stroke-width:0.7"/>
+<text x="1054.0" y="526.5" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.75)">Block 4</text>
+<text x="1346.0" y="526.5" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.45)">MSA + MLP</text>
+<line x1="1044.0" y1="538.3" x2="1356.0" y2="538.3" style="stroke:rgba(255,255,255,0.2);stroke-width:0.7"/>
+<text x="1054.0" y="558.2" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.75)">Block 5</text>
+<text x="1346.0" y="558.2" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.45)">MSA + MLP</text>
+<line x1="1044.0" y1="570.0" x2="1356.0" y2="570.0" style="stroke:rgba(255,255,255,0.2);stroke-width:0.7"/>
+<text x="1054.0" y="589.8" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.75)">Block 6</text>
+<text x="1346.0" y="589.8" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.45)">MSA + MLP</text>
+<line x1="1044.0" y1="601.7" x2="1356.0" y2="601.7" style="stroke:rgba(255,255,255,0.2);stroke-width:0.7"/>
+<text x="1054.0" y="621.5" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="10px" fill="rgba(255,255,255,0.75)">Block 7</text>
+<text x="1346.0" y="621.5" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.45)">MSA + MLP</text>
+<text x="1054.0" y="653.2" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="700" font_size="10px" fill="rgba(255,255,255,0.9)">Block 8</text>
+<text x="1346.0" y="653.2" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.6)">MSA + MLP</text>
+<line x1="1044.0" y1="665.0" x2="1356.0" y2="665.0" style="stroke:rgba(255,255,255,0.3);stroke-width:0.8"/>
+<text x="1054.0" y="684.8" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="700" font_size="10px" fill="rgba(255,255,255,0.9)">Block 9</text>
+<text x="1346.0" y="684.8" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.6)">MSA + MLP</text>
+<line x1="1044.0" y1="696.7" x2="1356.0" y2="696.7" style="stroke:rgba(255,255,255,0.3);stroke-width:0.8"/>
+<text x="1054.0" y="716.5" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="700" font_size="10px" fill="rgba(255,255,255,0.9)">Block 10</text>
+<text x="1346.0" y="716.5" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.6)">MSA + MLP</text>
+<line x1="1044.0" y1="728.3" x2="1356.0" y2="728.3" style="stroke:rgba(255,255,255,0.3);stroke-width:0.8"/>
+<text x="1054.0" y="748.2" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="700" font_size="10px" fill="rgba(255,255,255,0.9)">Block 11</text>
+<text x="1346.0" y="748.2" text_anchor="end" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="9px" fill="rgba(255,255,255,0.6)">MSA + MLP</text>
+<line x1="1040.0" y1="633.3" x2="1360.0" y2="633.3" style="stroke:#f59e0b;stroke-width:2;stroke-dasharray:6 3"/>
+<rect x="1384.0" y="443.3" width="76.0" height="28.0" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke_width="1"/>
+<text x="1422.0" y="462.3" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="800" font_size="11px" fill="#64748b" letter_spacing="0.1em">FROZEN</text>
+<line x1="1382.0" y1="390.0" x2="1382.0" y2="623.3" style="stroke:#94a3b8;stroke-width:1.5;stroke-dasharray:4 3"/>
+<rect x="1384.0" y="665.0" width="100.0" height="28.0" rx="8" fill="#d1fae5" stroke="#34d399" stroke_width="1"/>
+<text x="1434.0" y="684.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="800" font_size="11px" fill="#065f46" letter_spacing="0.1em">FINE-TUNE</text>
+<line x1="1382.0" y1="643.3" x2="1382.0" y2="750.0" style="stroke:#34d399;stroke-width:1.5;stroke-dasharray:4 3"/>
+<text x="1200.0" y="362.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="600" font_size="12px" fill="#166534">ViT-B/16 Encoder · weight-copied · fine-tune blocks 8–11</text>
+<!-- Weight Copy -->
+<path d="M456,570.0 C596,490.0 900,490.0 1040,570.0" style="stroke:#f59e0b;stroke-width:3;fill:none;stroke-linecap:round;stroke-dasharray:10 5"/>
+<polygon points="1040.0,570.0 1028.1,571.3 1035.1,559.1" fill="#f59e0b" stroke="none"/>
+<rect x="658.0" y="456.0" width="180.0" height="30.0" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke_width="1.5"/>
+<text x="748.0" y="475.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="13px" fill="#92400e">Weight Copy Transfer</text>
+<line x1="280.0" y1="760.0" x2="280.0" y2="785.0" style="stroke:#475569;stroke-width:2.4;stroke-linecap:round"/>
+<polygon points="280.0,790.0 274.1,781.9 285.9,781.9" fill="#475569" stroke="none"/>
+<polygon points="170.0,790.0 390.0,790.0 402.0,778.0 182.0,778.0" fill="#2563eb" stroke="#60a5fa" stroke_width="1.2"/>
+<polygon points="390.0,790.0 402.0,778.0 402.0,826.0 390.0,838.0" fill="#1e3a8a" stroke="#60a5fa" stroke_width="1.2"/>
+<rect x="170.0" y="790.0" width="220.0" height="48.0" rx="6" fill="#1e40af" stroke="#60a5fa" stroke_width="1.2"/>
+<text x="280.0" y="808.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="14px" fill="#ffffff">[CLS] Token</text>
+<text x="280.0" y="825.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="11px" fill="rgba(255,255,255,0.90)">768-d global feature</text>
+<line x1="280.0" y1="838.0" x2="280.0" y2="859.0" style="stroke:#475569;stroke-width:2.4;stroke-linecap:round"/>
+<polygon points="280.0,864.0 274.1,855.9 285.9,855.9" fill="#475569" stroke="none"/>
+<polygon points="150.0,864.0 410.0,864.0 422.0,852.0 162.0,852.0" fill="#38bdf8" stroke="#bae6fd" stroke_width="1.2"/>
+<polygon points="410.0,864.0 422.0,852.0 422.0,910.0 410.0,922.0" fill="#0284c7" stroke="#bae6fd" stroke_width="1.2"/>
+<rect x="150.0" y="864.0" width="260.0" height="58.0" rx="6" fill="#0ea5e9" stroke="#bae6fd" stroke_width="1.2"/>
+<text x="280.0" y="887.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="13px" fill="#ffffff">MLP Classification Head</text>
+<text x="280.0" y="903.5" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="12px" fill="rgba(255,255,255,0.90)">768 → 256 → 2</text>
+<line x1="280.0" y1="922.0" x2="280.0" y2="943.0" style="stroke:#475569;stroke-width:2.4;stroke-linecap:round"/>
+<polygon points="280.0,948.0 274.1,939.9 285.9,939.9" fill="#475569" stroke="none"/>
+<polygon points="140.0,948.0 420.0,948.0 432.0,936.0 152.0,936.0" fill="#ffffff" stroke="#cbd5e1" stroke_width="1.2"/>
+<polygon points="420.0,948.0 432.0,936.0 432.0,994.0 420.0,1006.0" fill="#e2e8f0" stroke="#cbd5e1" stroke_width="1.2"/>
+<rect x="140.0" y="948.0" width="280.0" height="58.0" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke_width="1.2"/>
+<text x="280.0" y="971.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="13px" fill="#1e293b">Class Probabilities</text>
+<text x="280.0" y="987.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="11px" fill="#475569">P(benign) / P(malignant)</text>
+<text x="280.0" y="1024.0" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="700" font_size="12px" fill="#1e40af">AUC = 0.9069</text>
+<line x1="1200.0" y1="760.0" x2="1200.0" y2="785.0" style="stroke:#475569;stroke-width:2.4;stroke-linecap:round"/>
+<polygon points="1200.0,790.0 1194.1,781.9 1205.9,781.9" fill="#475569" stroke="none"/>
+<polygon points="1070.0,790.0 1330.0,790.0 1342.0,778.0 1082.0,778.0" fill="#14b8a6" stroke="#5eead4" stroke_width="1.2"/>
+<polygon points="1330.0,790.0 1342.0,778.0 1342.0,826.0 1330.0,838.0" fill="#0f766e" stroke="#5eead4" stroke_width="1.2"/>
+<rect x="1070.0" y="790.0" width="260.0" height="48.0" rx="6" fill="#0d9488" stroke="#5eead4" stroke_width="1.2"/>
+<text x="1200.0" y="808.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="13px" fill="#ffffff">Reshape Tokens</text>
+<text x="1200.0" y="824.5" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="11px" fill="rgba(255,255,255,0.90)">196×768 → 14×14×768</text>
+<line x1="1200.0" y1="838.0" x2="1200.0" y2="859.0" style="stroke:#475569;stroke-width:2.4;stroke-linecap:round"/>
+<polygon points="1200.0,864.0 1194.1,855.9 1205.9,855.9" fill="#475569" stroke="none"/>
+<rect x="964.0" y="834.0" width="532.0" height="286.0" rx="16" fill="#f0fdfa" stroke="#99f6e4" stroke_width="1.5"/>
+<text x="1230.0" y="852.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="13px" fill="#0d9488">UNet Decoder · 4-Stage Upsampling</text>
+<polygon points="1130.0,868.0 1330.0,868.0 1342.0,856.0 1142.0,856.0" fill="#14b8a6" stroke="#5eead4" stroke_width="0.8"/>
+<polygon points="1330.0,868.0 1342.0,856.0 1342.0,896.0 1330.0,908.0" fill="#0f766e" stroke="#5eead4" stroke_width="0.8"/>
+<rect x="1130.0" y="868.0" width="200.0" height="40.0" rx="4" fill="#0d9488" stroke="#5eead4" stroke_width="0.8"/>
+<text x="1230.0" y="883.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="11px" fill="#ffffff">Stage 1: 14×14 → 28×28</text>
+<text x="1230.0" y="897.5" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="10px" fill="rgba(255,255,255,0.90)">Conv + Upsample · 768→384</text>
+<line x1="1230.0" y1="908.0" x2="1230.0" y2="914.0" style="stroke:#0d9488;stroke-width:1.8;stroke-linecap:round"/>
+<polygon points="1230.0,918.0 1225.3,911.5 1234.7,911.5" fill="#0d9488" stroke="none"/>
+<polygon points="1100.0,918.0 1360.0,918.0 1372.0,906.0 1112.0,906.0" fill="#14b8a6" stroke="#5eead4" stroke_width="0.8"/>
+<polygon points="1360.0,918.0 1372.0,906.0 1372.0,946.0 1360.0,958.0" fill="#115e59" stroke="#5eead4" stroke_width="0.8"/>
+<rect x="1100.0" y="918.0" width="260.0" height="40.0" rx="4" fill="#0f766e" stroke="#5eead4" stroke_width="0.8"/>
+<text x="1230.0" y="933.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="11px" fill="#ffffff">Stage 2: 28×28 → 56×56</text>
+<text x="1230.0" y="947.5" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="10px" fill="rgba(255,255,255,0.90)">Conv + Upsample · 384→192</text>
+<line x1="1230.0" y1="958.0" x2="1230.0" y2="964.0" style="stroke:#0d9488;stroke-width:1.8;stroke-linecap:round"/>
+<polygon points="1230.0,968.0 1225.3,961.5 1234.7,961.5" fill="#0d9488" stroke="none"/>
+<polygon points="1070.0,968.0 1390.0,968.0 1402.0,956.0 1082.0,956.0" fill="#0f766e" stroke="#5eead4" stroke_width="0.8"/>
+<polygon points="1390.0,968.0 1402.0,956.0 1402.0,996.0 1390.0,1008.0" fill="#134e4a" stroke="#5eead4" stroke_width="0.8"/>
+<rect x="1070.0" y="968.0" width="320.0" height="40.0" rx="4" fill="#115e59" stroke="#5eead4" stroke_width="0.8"/>
+<text x="1230.0" y="983.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="11px" fill="#ffffff">Stage 3: 56×56 → 112×112</text>
+<text x="1230.0" y="997.5" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="10px" fill="rgba(255,255,255,0.90)">Conv + Upsample · 192→96</text>
+<line x1="1230.0" y1="1008.0" x2="1230.0" y2="1014.0" style="stroke:#0d9488;stroke-width:1.8;stroke-linecap:round"/>
+<polygon points="1230.0,1018.0 1225.3,1011.5 1234.7,1011.5" fill="#0d9488" stroke="none"/>
+<polygon points="1040.0,1018.0 1420.0,1018.0 1432.0,1006.0 1052.0,1006.0" fill="#2dd4bf" stroke="#99f6e4" stroke_width="0.8"/>
+<polygon points="1420.0,1018.0 1432.0,1006.0 1432.0,1046.0 1420.0,1058.0" fill="#0f766e" stroke="#99f6e4" stroke_width="0.8"/>
+<rect x="1040.0" y="1018.0" width="380.0" height="40.0" rx="4" fill="#0d9488" stroke="#99f6e4" stroke_width="0.8"/>
+<text x="1230.0" y="1033.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="11px" fill="#ffffff">Stage 4: 112×112 → 224×224</text>
+<text x="1230.0" y="1047.5" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="10px" fill="rgba(255,255,255,0.90)">Conv + Upsample · 96→32</text>
+<line x1="1160.0" y1="1058.0" x2="1112.7" y2="1129.8" style="stroke:#475569;stroke-width:2;stroke-linecap:round"/>
+<polygon points="1110.0,1134.0 1109.5,1124.0 1119.4,1130.5" fill="#475569" stroke="none"/>
+<line x1="1300.0" y1="1058.0" x2="1347.3" y2="1129.8" style="stroke:#475569;stroke-width:2;stroke-linecap:round"/>
+<polygon points="1350.0,1134.0 1340.6,1130.5 1350.5,1124.0" fill="#475569" stroke="none"/>
+<polygon points="1020.0,1134.0 1220.0,1134.0 1232.0,1122.0 1032.0,1122.0" fill="#a78bfa" stroke="#ddd6fe" stroke_width="1.2"/>
+<polygon points="1220.0,1134.0 1232.0,1122.0 1232.0,1174.0 1220.0,1186.0" fill="#7c3aed" stroke="#ddd6fe" stroke_width="1.2"/>
+<rect x="1020.0" y="1134.0" width="200.0" height="52.0" rx="6" fill="#8b5cf6" stroke="#ddd6fe" stroke_width="1.2"/>
+<text x="1120.0" y="1154.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="13px" fill="#ffffff">Mask Head</text>
+<text x="1120.0" y="1170.5" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="11px" fill="rgba(255,255,255,0.90)">Conv 32→1 · Sigmoid</text>
+<polygon points="1250.0,1134.0 1450.0,1134.0 1462.0,1122.0 1262.0,1122.0" fill="#a78bfa" stroke="#ddd6fe" stroke_width="1.2"/>
+<polygon points="1450.0,1134.0 1462.0,1122.0 1462.0,1174.0 1450.0,1186.0" fill="#7c3aed" stroke="#ddd6fe" stroke_width="1.2"/>
+<rect x="1250.0" y="1134.0" width="200.0" height="52.0" rx="6" fill="#8b5cf6" stroke="#ddd6fe" stroke_width="1.2"/>
+<text x="1350.0" y="1154.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="13px" fill="#ffffff">Edge Head</text>
+<text x="1350.0" y="1170.5" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="500" font_size="11px" fill="rgba(255,255,255,0.90)">Conv 32→1 · Sigmoid</text>
+<line x1="1120.0" y1="1186.0" x2="1120.0" y2="1205.0" style="stroke:#475569;stroke-width:2.4;stroke-linecap:round"/>
+<polygon points="1120.0,1210.0 1114.1,1201.9 1125.9,1201.9" fill="#475569" stroke="none"/>
+<line x1="1350.0" y1="1186.0" x2="1350.0" y2="1205.0" style="stroke:#475569;stroke-width:2.4;stroke-linecap:round"/>
+<polygon points="1350.0,1210.0 1344.1,1201.9 1355.9,1201.9" fill="#475569" stroke="none"/>
+<polygon points="1000.0,1210.0 1240.0,1210.0 1252.0,1198.0 1012.0,1198.0" fill="#ffffff" stroke="#cbd5e1" stroke_width="1.2"/>
+<polygon points="1240.0,1210.0 1252.0,1198.0 1252.0,1252.0 1240.0,1264.0" fill="#e2e8f0" stroke="#cbd5e1" stroke_width="1.2"/>
+<rect x="1000.0" y="1210.0" width="240.0" height="54.0" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke_width="1.2"/>
+<text x="1120.0" y="1231.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="13px" fill="#1e293b">Mask Probability</text>
+<text x="1120.0" y="1247.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="11px" fill="#475569">Lesion segmentation map</text>
+<polygon points="1230.0,1210.0 1470.0,1210.0 1482.0,1198.0 1242.0,1198.0" fill="#ffffff" stroke="#cbd5e1" stroke_width="1.2"/>
+<polygon points="1470.0,1210.0 1482.0,1198.0 1482.0,1252.0 1470.0,1264.0" fill="#e2e8f0" stroke="#cbd5e1" stroke_width="1.2"/>
+<rect x="1230.0" y="1210.0" width="240.0" height="54.0" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke_width="1.2"/>
+<text x="1350.0" y="1231.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="13px" fill="#1e293b">Edge Probability</text>
+<text x="1350.0" y="1247.5" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="11px" fill="#475569">Boundary detection map</text>
+<text x="1230.0" y="1282.0" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="700" font_size="12px" fill="#065f46">Dice = 0.6902  ·  IoU = 0.5986</text>
+<rect x="60.0" y="1370.0" width="540.0" height="100.0" rx="14" fill="#fffbeb" stroke="#fcd34d" stroke_width="1.5"/>
+<text x="330.0" y="1394.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="14px" fill="#92400e">Loss Functions</text>
+<text x="330.0" y="1420.0" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="13px" fill="#78350f">L_seg = 0.3 · BCE + 0.7 · (1 − IoU)</text>
+<text x="330.0" y="1444.0" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="13px" fill="#78350f">L_total = L_seg + 0.1 · L_edge</text>
+<rect x="650.0" y="1370.0" width="500.0" height="100.0" rx="14" fill="#f0fdf4" stroke="#86efac" stroke_width="1.5"/>
+<text x="900.0" y="1394.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="14px" fill="#166534">Training Configuration</text>
+<text x="900.0" y="1418.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="12px" fill="#15803d">Fine-tune: ViT blocks 8–11 + full UNet decoder</text>
+<text x="900.0" y="1438.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="12px" fill="#15803d">Inference: 5-fold ensemble · probability averaging</text>
+<text x="900.0" y="1458.0" text_anchor="middle" font_family="ui-monospace,SFMono-Regular,Menlo,monospace" font_weight="600" font_size="11px" fill="#166534">Trainable parameters: 34.6M</text>
+<rect x="1200.0" y="1370.0" width="540.0" height="100.0" rx="14" fill="#eff6ff" stroke="#93c5fd" stroke_width="1.5"/>
+<text x="1470.0" y="1394.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="700" font_size="14px" fill="#1e40af">Cross-domain Protocol</text>
+<text x="1470.0" y="1418.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="600" font_size="13px" fill="#1d4ed8">Train: BUSBRA  →  Test: BUSI</text>
+<text x="1470.0" y="1438.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="11px" fill="#1e40af">Domain overfitting: direct UNet training leads to</text>
+<text x="1470.0" y="1454.0" text_anchor="middle" font_family="Inter,system-ui,-apple-system,sans-serif" font_weight="500" font_size="11px" fill="#1e40af">poor cross-domain segmentation; weight-copy mitigates this</text>
+</svg>

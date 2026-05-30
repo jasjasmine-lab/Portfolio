@@ -1,0 +1,56 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RoboTRAC README</title>
+<style>
+:root{--bg:#fbfbfc;--ink:#121826;--muted:rgba(18,24,38,.72);--line:rgba(18,24,38,.12);--panel:rgba(255,255,255,.78);--radius:18px;--max:960px;--mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--sans:ui-sans-serif,system-ui,-apple-system,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei","Segoe UI",sans-serif;}
+@media (prefers-color-scheme: dark){:root{--bg:#070a12;--ink:rgba(255,255,255,.92);--muted:rgba(255,255,255,.70);--line:rgba(255,255,255,.14);--panel:rgba(10,14,25,.72);}}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:linear-gradient(180deg,var(--bg),var(--bg));}
+.wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 64px;}
+.top{display:flex;gap:10px;align-items:baseline;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px;}
+.top a{color:inherit;text-decoration:none;border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.4);} 
+@media (prefers-color-scheme: dark){.top a{background:rgba(0,0,0,.18);}}
+.card{border:1px solid var(--line);border-radius:calc(var(--radius) + 6px);background:var(--panel);padding:22px;}
+h1,h2,h3{font-family:ui-serif,"Songti SC","STSong","Noto Serif CJK SC",serif;letter-spacing:-.01em}
+h1{margin:0 0 10px;font-size:30px}
+h2{margin:22px 0 10px;font-size:20px}
+h3{margin:18px 0 8px;font-size:16px}
+p,li{color:var(--muted);line-height:1.75;font-size:14px}
+ul{padding-left:18px}
+code{font-family:var(--mono)}
+pre{margin:10px 0;padding:12px 12px 14px;border-radius:14px;border:1px solid var(--line);overflow:auto;background:rgba(255,255,255,.45);}
+@media (prefers-color-scheme: dark){pre{background:rgba(0,0,0,.18);}}
+hr{border:none;border-top:1px solid var(--line);margin:18px 0;}
+</style></head><body>
+<div class="wrap">
+<div class="top"><div><strong>RoboTRAC</strong> / README</div><a href="./index.html">← Back</a></div>
+<div class="card">
+<h1>Patent Conversion Multi-Class Predictor</h1>
+<p>This package provides a <strong>4-Class Classification Model</strong> ("低/中/偏高/高转化") for patent conversion potential prediction.</p>
+<p>It uses a <strong>Single-Stage</strong> architecture with <strong>Enriched Features</strong> (Semantic + Statistical) and <strong>Class Balancing</strong>, which has been proven to offer the best balance of accuracy, recall, and safety.</p>
+<h2>Installation</h2>
+<p>1. Install dependencies:</p>
+<pre><code>   pip install -r requirements.txt</code></pre>
+<h2>Usage</h2>
+<h3>Training</h3>
+<p>To train the model on your full dataset (including non-converted patents):</p>
+<pre><code>python patent_multi_predictor.py --mode train --input path/to/data.xlsx --model my_model.pkl --device cuda</code></pre>
+<ul>
+<li><strong>Input Data</strong>: Must be an Excel file with columns: `title`, `abstract`, `IPC主分类`, and `转化潜力` (target).</li>
+<li><strong>Device</strong>: Use `--device cuda` for GPU acceleration (highly recommended).</li>
+</ul>
+<h3>Prediction</h3>
+<p>To predict conversion grades for new patents:</p>
+<pre><code>python patent_multi_predictor.py --mode predict --input path/to/new_data.xlsx --model my_model.pkl --output results.xlsx --device cuda</code></pre>
+<ul>
+<li><strong>Output</strong>: An Excel file containing:</li>
+<li>`pred_label`: Predicted grade (低转化/中转化/偏高转化/高转化)</li>
+<li>`prob_*`: Probability for each class</li>
+<li>`screening_score`: Probability of being ANY converted class (useful for filtering)</li>
+</ul>
+<h2>Model Performance (Weighted Metrics)</h2>
+<ul>
+<li><strong>Accuracy</strong>: ~85%</li>
+<li><strong>F1-Score</strong>: ~0.81</li>
+<li><strong>AUC-ROC</strong>: ~0.88</li>
+</ul>
+</div></div></body></html>

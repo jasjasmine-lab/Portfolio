@@ -1,0 +1,20 @@
+{"type":"server-started","port":54759,"host":"0.0.0.0","url_host":"localhost","url":"http://localhost:54759","screen_dir":"/sessions/6a0fcd40f966955c11649d6e/workspace/portfolio/.superpowers/brainstorm/49582-1779849434/content","state_dir":"/sessions/6a0fcd40f966955c11649d6e/workspace/portfolio/.superpowers/brainstorm/49582-1779849434/state"}
+{"type":"screen-added","file":"/sessions/6a0fcd40f966955c11649d6e/workspace/portfolio/.superpowers/brainstorm/49582-1779849434/content/visual-style.html"}
+{"type":"server-stopped","reason":"owner process exited"}
+node:fs:1948
+  binding.unlink(getValidatedPath(path));
+          ^
+
+Error: ENOSYS: function not implemented, unlink '/sessions/6a0fcd40f966955c11649d6e/workspace/portfolio/.superpowers/brainstorm/49582-1779849434/state/server-info'
+    at Object.unlinkSync (node:fs:1948:11)
+    at shutdown (/mnt/appuserdata/skills/brainstorming/scripts/server.cjs:304:37)
+    at Timeout._onTimeout (/mnt/appuserdata/skills/brainstorming/scripts/server.cjs:321:24)
+    at listOnTimeout (node:internal/timers:585:17)
+    at process.processTimers (node:internal/timers:521:7) {
+  errno: -38,
+  code: 'ENOSYS',
+  syscall: 'unlink',
+  path: '/sessions/6a0fcd40f966955c11649d6e/workspace/portfolio/.superpowers/brainstorm/49582-1779849434/state/server-info'
+}
+
+Node.js v22.22.2

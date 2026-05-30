@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Breast US | Report</title>
+    <link rel="stylesheet" href="../roboTRAC/roboTRAC.css" />
+    <style>
+      body{background: linear-gradient(180deg, var(--bg), var(--bg));}
+      header{position: static;}
+      .topline{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+      .crumb{font-family: var(--serif); font-size: 22px; letter-spacing: -.01em;}
+      .sub{color: var(--muted); font-size: 13px;}
+      .actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+    </style>
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("site_theme");
+          if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="topbar topline">
+          <div>
+            <div class="crumb">Breast US / Report</div>
+            <div class="sub">report.pdf</div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="./index.html">← Back</a>
+            <button class="btn" id="themeBtn" type="button">Dark</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap" style="padding-top:18px;">
+      <section class="section" style="margin-top:0;">
+        <div class="links" style="margin-top:0;">
+          <a class="pill" href="../../raw/breast-us/report.pdf">Open / Download (PDF)</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var btn = document.getElementById("themeBtn");
+        if (!btn) return;
+        function label(){
+          var cur=document.documentElement.getAttribute("data-theme")||"";
+          if(!cur){
+            var sysDark=window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+            btn.textContent = sysDark ? "Dark" : "Light";
+            return;
+          }
+          btn.textContent = cur==="dark" ? "Dark" : "Light";
+        }
+        btn.addEventListener("click", function(){
+          var cur=document.documentElement.getAttribute("data-theme")||"";
+          if(!cur){
+            var sysDark=window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+            cur = sysDark ? "dark" : "light";
+          }
+          var next=cur==="dark"?"light":"dark";
+          document.documentElement.setAttribute("data-theme", next);
+          try{ localStorage.setItem("site_theme", next); }catch(e){}
+          label();
+        });
+        label();
+      })();
+    </script>
+  </body>
+</html>

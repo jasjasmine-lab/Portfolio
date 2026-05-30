@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="650" viewBox="0 0 1400 650" role="img" aria-label="Cross-domain dual-task comparison table">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#0b1220" flood-opacity="0.12"/>
+    </filter>
+    <style><![CDATA[
+      .title{font: 800 22px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill:#0b1220;}
+      .sub{font: 500 12px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill:#475569;}
+      .h{font: 800 12px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill:#334155; letter-spacing:.08em; text-transform:uppercase;}
+      .m{font: 700 12px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill:#0b1220;}
+      .a{font: 500 11px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill:#475569;}
+      .n{font: 700 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; fill:#0b1220;}
+      .card{fill:url(#bg); stroke:#e2e8f0; stroke-width:1.2; rx:18; filter:url(#shadow);}
+      .grid{stroke:#e2e8f0; stroke-width:1;}
+    ]]></style>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="650" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1320" height="570" class="card"/>
+
+  <text x="80" y="92" class="title">Cross-Domain Dual-Task Comparison on BUSI</text>
+  <text x="80" y="116" class="sub">Trained on BUSBRA · 5-fold cross-validation · Dual-task: classification + segmentation</text>
+
+  <!-- Table geometry -->
+  <!-- columns: Model | Algorithm | Dice | IoU | AUC | Params | Trainable -->
+  <!-- x positions -->
+  <!-- 80  300  760  860  950  1040  1150  1320 -->
+  <g transform="translate(80,150)">
+    <!-- header background -->
+    <rect x="0" y="0" width="1240" height="44" rx="12" fill="#f1f5f9" stroke="#e2e8f0"/>
+    <text x="14" y="28" class="h">Model</text>
+    <text x="220" y="28" class="h">Algorithm</text>
+    <text x="700" y="28" class="h">Dice</text>
+    <text x="790" y="28" class="h">IoU</text>
+    <text x="870" y="28" class="h">AUC</text>
+    <text x="952" y="28" class="h">Params</text>
+    <text x="1046" y="28" class="h">Train.</text>
+
+    <!-- row helper -->
+    <!-- row height = 52 -->
+    <!-- zebra rows -->
+    <rect x="0" y="44" width="1240" height="52" fill="#ffffff"/>
+    <rect x="0" y="96" width="1240" height="52" fill="#ffffff"/>
+    <rect x="0" y="148" width="1240" height="52" fill="#ffffff"/>
+    <rect x="0" y="200" width="1240" height="52" fill="#ffffff"/>
+    <rect x="0" y="252" width="1240" height="52" fill="#ffffff"/>
+    <rect x="0" y="304" width="1240" height="52" fill="#ffffff"/>
+    <rect x="0" y="356" width="1240" height="52" fill="#ffffff"/>
+    <rect x="0" y="408" width="1240" height="52" fill="#ffffff"/>
+
+    <!-- grid lines -->
+    <line x1="0" y1="44" x2="1240" y2="44" class="grid"/>
+    <line x1="0" y1="96" x2="1240" y2="96" class="grid"/>
+    <line x1="0" y1="148" x2="1240" y2="148" class="grid"/>
+    <line x1="0" y1="200" x2="1240" y2="200" class="grid"/>
+    <line x1="0" y1="252" x2="1240" y2="252" class="grid"/>
+    <line x1="0" y1="304" x2="1240" y2="304" class="grid"/>
+    <line x1="0" y1="356" x2="1240" y2="356" class="grid"/>
+    <line x1="0" y1="408" x2="1240" y2="408" class="grid"/>
+    <line x1="0" y1="460" x2="1240" y2="460" class="grid"/>
+
+    <!-- column separators -->
+    <line x1="200" y1="0" x2="200" y2="460" class="grid"/>
+    <line x1="680" y1="0" x2="680" y2="460" class="grid"/>
+    <line x1="770" y1="0" x2="770" y2="460" class="grid"/>
+    <line x1="850" y1="0" x2="850" y2="460" class="grid"/>
+    <line x1="930" y1="0" x2="930" y2="460" class="grid"/>
+    <line x1="1020" y1="0" x2="1020" y2="460" class="grid"/>
+    <line x1="1120" y1="0" x2="1120" y2="460" class="grid"/>
+
+    <!-- rows (order matches the bar chart) -->
+    <!-- 1 U-Net -->
+    <text x="14" y="76" class="m">U-Net</text>
+    <text x="220" y="70" class="a">Standard encoder–decoder</text>
+    <text x="220" y="86" class="a">with skip connections (baseline)</text>
+    <text x="700" y="76" class="n">0.6159</text>
+    <text x="790" y="76" class="n">0.5013</text>
+    <text x="870" y="76" class="n">0.8091</text>
+    <text x="952" y="76" class="n">31.3M</text>
+    <text x="1046" y="76" class="n">31.3M</text>
+
+    <!-- 2 Att U-Net -->
+    <text x="14" y="128" class="m">Att U-Net</text>
+    <text x="220" y="122" class="a">U-Net + attention gates</text>
+    <text x="220" y="138" class="a">for salient region focusing</text>
+    <text x="700" y="128" class="n">0.6139</text>
+    <text x="790" y="128" class="n">0.4991</text>
+    <text x="870" y="128" class="n">0.8315</text>
+    <text x="952" y="128" class="n">31.7M</text>
+    <text x="1046" y="128" class="n">31.7M</text>
+
+    <!-- 3 TransUNet -->
+    <text x="14" y="180" class="m">TransUNet</text>
+    <text x="220" y="174" class="a">ResNet34 encoder + ViT bottleneck</text>
+    <text x="220" y="190" class="a">+ CNN decoder</text>
+    <text x="700" y="180" class="n">0.6607</text>
+    <text x="790" y="180" class="n">0.5645</text>
+    <text x="870" y="180" class="n">0.8613</text>
+    <text x="952" y="180" class="n">52.9M</text>
+    <text x="1046" y="180" class="n">52.9M</text>
+
+    <!-- 4 UNETR -->
+    <text x="14" y="232" class="m">UNETR</text>
+    <text x="220" y="226" class="a">ViT-B/16 encoder (frozen)</text>
+    <text x="220" y="242" class="a">+ CNN upsampling decoder</text>
+    <text x="700" y="232" class="n">0.4674</text>
+    <text x="790" y="232" class="n">0.3540</text>
+    <text x="870" y="232" class="n">0.7596</text>
+    <text x="952" y="232" class="n">87.7M</text>
+    <text x="1046" y="232" class="n">87.7M</text>
+
+    <!-- 5 SegFormer -->
+    <text x="14" y="284" class="m">SegFormer</text>
+    <text x="220" y="278" class="a">EffNet-B0 multi-scale features</text>
+    <text x="220" y="294" class="a">+ lightweight MLP decoder</text>
+    <text x="700" y="284" class="n">0.6145</text>
+    <text x="790" y="284" class="n">0.5080</text>
+    <text x="870" y="284" class="n">0.8714</text>
+    <text x="952" y="284" class="n">4.4M</text>
+    <text x="1046" y="284" class="n">4.4M</text>
+
+    <!-- 6 UNet++ -->
+    <text x="14" y="336" class="m">UNet++</text>
+    <text x="220" y="330" class="a">Nested dense skip connections</text>
+    <text x="220" y="346" class="a">across encoder–decoder levels</text>
+    <text x="700" y="336" class="n">0.6398</text>
+    <text x="790" y="336" class="n">0.5310</text>
+    <text x="870" y="336" class="n">0.8191</text>
+    <text x="952" y="336" class="n">37.8M</text>
+    <text x="1046" y="336" class="n">37.8M</text>
+
+    <!-- 7 DeepLabV3+ -->
+    <text x="14" y="388" class="m">DeepLabV3+</text>
+    <text x="220" y="382" class="a">ResNet50 encoder + ASPP decoder</text>
+    <text x="220" y="398" class="a">(atrous spatial pyramid pooling)</text>
+    <text x="700" y="388" class="n">0.6679</text>
+    <text x="790" y="388" class="n">0.5661</text>
+    <text x="870" y="388" class="n">0.8753</text>
+    <text x="952" y="388" class="n">40.9M</text>
+    <text x="1046" y="388" class="n">40.9M</text>
+
+    <!-- 8 Ours -->
+    <rect x="0" y="408" width="1240" height="52" fill="#eff6ff"/>
+    <text x="14" y="440" class="m" fill="#1e40af">Ours (Dual-BB)</text>
+    <text x="220" y="434" class="a">Frozen ViT-B/16 (cls) + tunable</text>
+    <text x="220" y="450" class="a">EffNet-B0 + FPN (seg)</text>
+    <text x="700" y="440" class="n" fill="#1e40af">0.7111</text>
+    <text x="790" y="440" class="n" fill="#1e40af">0.6185</text>
+    <text x="870" y="440" class="n" fill="#1e40af">0.9066</text>
+    <text x="952" y="440" class="n">92.0M</text>
+    <text x="1046" y="440" class="n" fill="#1e40af">4.2M</text>
+    <rect x="0" y="408" width="1240" height="52" fill="none" stroke="#1e40af" stroke-width="2"/>
+  </g>
+
+  <text x="80" y="628" class="sub">Note: “Train.” denotes trainable parameters during fine-tuning (millions).</text>
+</svg>
+

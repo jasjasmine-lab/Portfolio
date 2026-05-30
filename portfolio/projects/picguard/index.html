@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="PicGuard：通过主动对抗扰动降低扩散模型对图像风格/内容的复刻能力（中英双语项目页）" />
+    <title>PicGuard｜扩散模型版权保护的主动对抗防御</title>
+    <!-- Share the same visual system with RoboTRAC -->
+    <link rel="stylesheet" href="../roboTRAC/roboTRAC.css" />
+    <link rel="stylesheet" href="./picguard.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("site_theme");
+          if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="grid-noise" aria-hidden="true"></div>
+
+    <header>
+      <div class="wrap">
+        <div class="topbar">
+          <div class="brand">
+            <div class="name">PicGuard</div>
+            <div class="tag">Diffusion Safety</div>
+          </div>
+
+          <nav aria-label="section navigation">
+            <a class="btn" href="../../index.html" aria-label="返回导航页" title="返回导航页">← 导航</a>
+            <a href="#overview" data-i18n="nav.overview"></a>
+            <a href="#results" data-i18n="nav.results"></a>
+            <a href="#method" data-i18n="nav.method"></a>
+            <a href="#sources" data-i18n="nav.sources"></a>
+            <button class="btn" id="themeBtn" type="button">Dark</button>
+            <button class="btn" id="langBtn" type="button">EN</button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero fade-in" id="top">
+        <div class="subtitle" data-i18n="hero.subtitle"></div>
+        <h1 data-i18n="hero.title"></h1>
+        <div class="tagline" data-i18n="hero.tagline"></div>
+
+        <div class="kpi" aria-label="key metrics">
+          <div class="card">
+            <div class="label" data-i18n="kpi.k1_label"></div>
+            <div class="value" data-i18n="kpi.k1_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k2_label"></div>
+            <div class="value" data-i18n="kpi.k2_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k3_label"></div>
+            <div class="value" data-i18n="kpi.k3_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k4_label"></div>
+            <div class="value" data-i18n="kpi.k4_value"></div>
+          </div>
+          <div class="card">
+            <div class="label" data-i18n="kpi.k5_label"></div>
+            <div class="value" data-i18n="kpi.k5_value"></div>
+          </div>
+          <div class="card">
+            <div class="label">UI</div>
+            <div class="value">Upload → Protect → Compare</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="overview">
+        <h2 data-i18n="section.overview_title"></h2>
+        <p class="lead value" data-i18n="section.value"></p>
+        <h3 style="margin: 0 0 6px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase" data-i18n="section.highlights"></h3>
+        <ul class="list" data-i18n-list="section.highlights_items"></ul>
+      </section>
+
+      <section class="section fade-in" id="results">
+        <h2 data-i18n="section.results_title"></h2>
+
+        <h3 style="margin: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase" data-i18n="section.gallery_title"></h3>
+        <div class="gallery" aria-label="qualitative gallery">
+          <div class="item">
+            <img src="../../assets/picguard/gallery/before_after.png" alt="Before/After comparison" loading="lazy" />
+            <div class="cap">Before / Protected (UI comparison)</div>
+          </div>
+          <div class="item">
+            <img src="../../assets/picguard/gallery/validation.png" alt="Validation view" loading="lazy" />
+            <div class="cap">Validation view (excerpt)</div>
+          </div>
+          <div class="item">
+            <img src="../../assets/picguard/gallery/upload_result.png" alt="Upload and result" loading="lazy" />
+            <div class="cap">Upload → Result display</div>
+          </div>
+          <div class="item">
+            <img src="../../assets/picguard/gallery/web_home.png" alt="Web home page" loading="lazy" />
+            <div class="cap">Web home</div>
+          </div>
+        </div>
+
+        <div style="height: 14px"></div>
+
+        <h3 style="margin: 0 0 10px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase" data-i18n="section.figures_title"></h3>
+        <div class="figure-grid" aria-label="key figures">
+          <div class="figure-card">
+            <img src="../../assets/picguard/figures/flowchart_adv.png" alt="Flowchart" loading="lazy" />
+            <div class="cap">Flowchart</div>
+          </div>
+          <div class="figure-card">
+            <img src="../../assets/picguard/figures/adv_sample_gen.png" alt="Adversarial sample generation" loading="lazy" />
+            <div class="cap">Adversarial sample generation</div>
+          </div>
+          <div class="figure-card">
+            <img src="../../assets/picguard/figures/diffusion_steps.png" alt="Diffusion steps" loading="lazy" />
+            <div class="cap">Diffusion generation steps</div>
+          </div>
+          <div class="figure-card">
+            <img src="../../assets/picguard/figures/picguard_steps.png" alt="PicGuard steps" loading="lazy" />
+            <div class="cap">PicGuard workflow</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="method">
+        <h2 data-i18n="section.method_title"></h2>
+
+        <div class="cols">
+          <div>
+            <h3 style="margin: 0 0 6px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase">Notebook</h3>
+            <div class="nb" aria-label="notebook style code">
+              <div class="cell">
+                <div class="prompt">In&nbsp;[1]</div>
+                <pre><code># Threat model (high-level)
+# attacker uses a diffusion model to imitate style/content from a reference image</code></pre>
+              </div>
+              <div class="cell">
+                <div class="prompt">In&nbsp;[2]</div>
+                <pre><code># Monte Carlo estimation (intuition)
+# sample latent/noise to approximate gradients over diffusion randomness</code></pre>
+              </div>
+              <div class="cell">
+                <div class="prompt">In&nbsp;[3]</div>
+                <pre><code># Sign Gradient Ascent
+# x_{t+1} = clip(x_t + alpha * sign(grad), budget)</code></pre>
+              </div>
+              <div class="cell out">
+                <div class="prompt">Out&nbsp;[3]</div>
+                <pre><code>protected_image
+visual_similarity  (should remain high)
+imitation_quality  (should drop)</code></pre>
+              </div>
+            </div>
+
+            <div class="figure-grid" aria-label="method figures" style="margin-top:14px;">
+              <div class="figure-card">
+                <img src="../../assets/picguard/figures/perturb_features.png" alt="Perturbation features" loading="lazy" />
+                <div class="cap">Perturbation features</div>
+              </div>
+              <div class="figure-card">
+                <img src="../../assets/picguard/figures/gradient_ascent.png" alt="Gradient ascent" loading="lazy" />
+                <div class="cap">Gradient ascent</div>
+              </div>
+              <div class="figure-card">
+                <img src="../../assets/picguard/figures/principle_blocking.png" alt="Blocking principle" loading="lazy" />
+                <div class="cap">Blocking principle</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-in" id="sources">
+        <h2 data-i18n="section.sources_title"></h2>
+        <div class="links" data-i18n-links="section.sources_items"></div>
+      </section>
+    </main>
+
+    <script src="./picguard.i18n.js"></script>
+    <script src="./picguard.js"></script>
+  </body>
+</html>

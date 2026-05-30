@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-label="Compact overview: frozen ViT classifier + weight-copied ViT-UNet segmenter">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f7f8fa"/>
+      <stop offset="100%" stop-color="#eef2f6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0b1220" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,8 L11,4 z" fill="#1f2937"/>
+    </marker>
+    <style><![CDATA[
+      .title{font: 700 28px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill:#0b1220;}
+      .h{font: 800 14px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; letter-spacing:.08em; text-transform:uppercase; fill:#0b1220;}
+      .t{font: 650 16px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill:#0b1220;}
+      .s{font: 500 13px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill:#475569;}
+      .mono{font: 650 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; fill:#334155;}
+      .box{fill:#ffffff; fill-opacity:.78; stroke:#cbd5e1; stroke-width:1.2; filter:url(#shadow);}
+      .cls{fill:#eff6ff; stroke:#93c5fd;}
+      .seg{fill:#ecfdf5; stroke:#86efac;}
+      .head{fill:#f0fdfa; stroke:#5eead4;}
+      .link{stroke:#1f2937; stroke-width:2.1; stroke-linecap:round; marker-end:url(#arrow);}
+      .sep{stroke:#e2e8f0; stroke-width:1;}
+      .note{font: 600 11px Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; fill:#64748b;}
+    ]]></style>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="760" fill="url(#bg)"/>
+  <text x="800" y="58" text-anchor="middle" class="title">Compact Architecture Overview (ViT-UNet)</text>
+
+  <!-- Input -->
+  <rect x="70" y="140" width="260" height="170" rx="18" class="box"/>
+  <text x="200" y="172" text-anchor="middle" class="h">Input</text>
+  <rect x="110" y="190" width="180" height="90" rx="14" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="200" y="238" text-anchor="middle" class="t">BUS image</text>
+  <text x="200" y="262" text-anchor="middle" class="s">224×224</text>
+
+  <!-- Split -->
+  <circle cx="370" cy="225" r="8" fill="#0f172a" opacity="0.9"/>
+  <line x1="330" y1="225" x2="362" y2="225" class="link"/>
+
+  <!-- Classification row -->
+  <rect x="430" y="120" width="350" height="210" rx="18" class="box cls"/>
+  <text x="455" y="150" class="h" fill="#1e40af">Classification (frozen)</text>
+  <line x1="450" y1="165" x2="760" y2="165" class="sep"/>
+  <text x="605" y="205" text-anchor="middle" class="t">ViT-B/16</text>
+  <text x="605" y="230" text-anchor="middle" class="mono">12 blocks · 768-d</text>
+  <text x="605" y="270" text-anchor="middle" class="t">MLP: 768 → 256 → 2</text>
+
+  <rect x="820" y="150" width="260" height="150" rx="18" class="box"/>
+  <text x="950" y="195" text-anchor="middle" class="t">Class probability</text>
+  <text x="950" y="220" text-anchor="middle" class="s">benign / malignant</text>
+  <rect x="875" y="240" width="150" height="10" rx="6" fill="#e2e8f0" stroke="#cbd5e1"/>
+  <rect x="875" y="240" width="112" height="10" rx="6" fill="#3b82f6"/>
+  <text x="950" y="272" text-anchor="middle" class="mono">example: 0.84 / 0.16</text>
+
+  <line x1="378" y1="225" x2="430" y2="225" class="link"/>
+  <line x1="780" y1="225" x2="820" y2="225" class="link"/>
+
+  <!-- Segmentation row -->
+  <rect x="430" y="400" width="650" height="270" rx="18" class="box seg"/>
+  <text x="455" y="430" class="h" fill="#166534">Segmentation (weight-copy)</text>
+  <line x1="450" y1="445" x2="1060" y2="445" class="sep"/>
+  <text x="620" y="495" text-anchor="middle" class="t">ViT-B/16 encoder → UNet decoder</text>
+  <text x="620" y="520" text-anchor="middle" class="mono">init from cls checkpoint · tune blocks 8–11</text>
+  <text x="620" y="560" text-anchor="middle" class="t">two heads</text>
+  <text x="620" y="585" text-anchor="middle" class="mono">Mask: 32→1 · Edge: 32→1</text>
+  <text x="620" y="615" text-anchor="middle" class="note">UNet restores 14×14 → 224×224</text>
+
+  <rect x="1120" y="405" width="410" height="120" rx="18" class="box head"/>
+  <text x="1325" y="455" text-anchor="middle" class="t">Mask probability map</text>
+  <text x="1325" y="480" text-anchor="middle" class="s">lesion segmentation</text>
+
+  <rect x="1120" y="550" width="410" height="120" rx="18" class="box head"/>
+  <text x="1325" y="600" text-anchor="middle" class="t">Edge probability map</text>
+  <text x="1325" y="625" text-anchor="middle" class="s">boundary-focused</text>
+
+  <!-- Split to segmentation -->
+  <line x1="370" y1="233" x2="370" y2="535" class="link"/>
+  <line x1="370" y1="535" x2="430" y2="535" class="link"/>
+  <line x1="1080" y1="470" x2="1120" y2="465" class="link"/>
+  <line x1="1080" y1="600" x2="1120" y2="610" class="link"/>
+</svg>
+

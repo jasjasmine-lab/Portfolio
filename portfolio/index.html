@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="作品集导航：跳转到各个项目展示页" />
+    <title>作品集｜项目导航</title>
+    <link rel="stylesheet" href="./projects/roboTRAC/roboTRAC.css" />
+    <style>
+      header{position: static;}
+      .hero{padding-top: 22px;}
+
+      /* 亮色模式：避免“发灰/一层灰雾”——保持展示页色系，但底色用纯白 */
+      html:not([data-theme="dark"]) body{
+        background:
+          radial-gradient(1200px 700px at 70% 5%, rgba(10,108,240,.10), transparent 60%),
+          radial-gradient(900px 560px at 8% 30%, rgba(0,166,166,.08), transparent 60%),
+          linear-gradient(180deg, #ffffff, #ffffff);
+      }
+      html:not([data-theme="dark"]) .grid-noise{display:none;}
+      html:not([data-theme="dark"]) header{
+        background: #ffffff;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      /* 亮色下 topbar 的 tag（“项目导航”）去灰底 */
+      html:not([data-theme="dark"]) .brand .tag{
+        background: #ffffff;
+      }
+
+      /* 亮色 chip：不使用灰底 */
+      html:not([data-theme="dark"]) .chip{
+        background: #ffffff;
+        color: rgba(18,24,38,.78);
+      }
+
+      /* 亮色按钮/胶囊：不使用灰底 */
+      html:not([data-theme="dark"]) .btn{background:#ffffff;}
+      html:not([data-theme="dark"]) .pill{background:#ffffff;}
+
+      .nav-grid{
+        margin-top: 14px;
+        display:grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .nav-card{
+        grid-column: span 6;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--panel);
+        overflow:hidden;
+        box-shadow: 0 18px 60px rgba(15, 23, 42, .10);
+        transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+      }
+      html[data-theme="dark"] .nav-card{
+        border-color: rgba(255,255,255,.16);
+        box-shadow: 0 26px 90px rgba(0,0,0,.55);
+      }
+      .nav-card:hover{
+        transform: translateY(-3px);
+        border-color: rgba(99,102,241,.55);
+        box-shadow: 0 24px 74px rgba(15, 23, 42, .16);
+      }
+      .nav-card .top{
+        padding: 14px 14px 10px;
+        display:flex;
+        align-items:flex-start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .nav-card .name{
+        font-family: var(--serif);
+        font-size: 19px;
+        letter-spacing: -.01em;
+        margin: 0;
+      }
+      .nav-card .desc{
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+      .chips{display:flex; flex-wrap:wrap; gap:8px; padding: 0 14px 14px;}
+      .chip{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        font-size: 12px;
+        padding: 6px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        background: var(--faint);
+        text-decoration:none;
+      }
+      html[data-theme="dark"] .chip{background: rgba(255,255,255,.08);}
+      .chip.primary{
+        color: #fff;
+        border-color: transparent;
+        background: linear-gradient(135deg, rgba(98,176,255,.95), rgba(124,246,230,.85));
+        box-shadow: 0 10px 26px rgba(10,108,240,.18);
+      }
+      .chip.primary:hover{filter: brightness(1.02); transform: translateY(-1px);}
+      .chip.small{padding: 5px 9px;}
+      .meta{
+        padding: 10px 14px 14px;
+        border-top: 1px solid var(--line);
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+        gap: 10px;
+        background: transparent;
+      }
+      html[data-theme="dark"] .meta{background: transparent;}
+      .meta .hint{font-size: 12px; color: var(--muted);}
+      .meta .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
+      .meta a{ text-decoration:none; }
+      @media (max-width: 980px){
+        .nav-card{grid-column: span 12;}
+      }
+    </style>
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("site_theme");
+          if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="grid-noise" aria-hidden="true"></div>
+
+    <header>
+      <div class="wrap">
+        <div class="topbar">
+          <div class="brand">
+            <div class="name">Portfolio</div>
+            <div class="tag" id="subTag">Project Navigation</div>
+          </div>
+          <nav aria-label="top actions">
+            <button class="btn" id="themeBtn" type="button">Dark</button>
+            <button class="btn" id="langBtn" type="button">EN</button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero fade-in">
+        <div class="subtitle" id="subtitle">项目导航</div>
+        <h1 id="title">项目目录</h1>
+
+        <div class="nav-grid" aria-label="project navigation">
+          <!-- RoboTRAC -->
+          <article class="nav-card">
+            <div class="top">
+              <div>
+                <h2 class="name">RoboTRAC</h2>
+                <p class="desc" id="d_robo" data-t="desc_robo">
+                  手术机器人专利临床转化潜力预测：专利文本特征 + 临床证据链 + 预测与可解释展示。
+                </p>
+              </div>
+              <a class="chip primary" href="./projects/roboTRAC/index.html" data-t="btn_open">打开</a>
+            </div>
+            <div class="chips">
+              <span class="chip small" data-t="chip_robo_nlp">NLP</span>
+              <span class="chip small" data-t="chip_robo_patent">专利</span>
+              <span class="chip small" data-t="chip_robo_tp">转化潜力</span>
+            </div>
+          </article>
+
+          <!-- PicGuard -->
+          <article class="nav-card">
+            <div class="top">
+              <div>
+                <h2 class="name">PicGuard</h2>
+                <p class="desc" id="d_picguard" data-t="desc_picguard">扩散模型版权保护：通过对抗扰动降低风格/内容复刻能力。</p>
+              </div>
+              <a class="chip primary" href="./projects/picguard/index.html" data-t="btn_open">打开</a>
+            </div>
+            <div class="chips">
+              <span class="chip small" data-t="chip_pg_diff">扩散</span>
+              <span class="chip small" data-t="chip_pg_adv">对抗</span>
+              <span class="chip small" data-t="chip_pg_cr">版权</span>
+            </div>
+          </article>
+
+          <!-- Breast US -->
+          <article class="nav-card">
+            <div class="top">
+              <div>
+                <h2 class="name">Breast US</h2>
+                <p class="desc" id="d_breastus" data-t="desc_breastus">
+                  跨域乳腺超声良恶性诊断：冻结分类 ViT + 分割 ViT 权重复制 + UNet 解码器。
+                </p>
+              </div>
+              <a class="chip primary" href="./projects/breast-us/index.html" data-t="btn_open">打开</a>
+            </div>
+            <div class="chips">
+              <span class="chip small" data-t="chip_bu_cd">跨域</span>
+              <span class="chip small" data-t="chip_bu_vitunet">ViT-UNet</span>
+              <span class="chip small" data-t="chip_bu_me">掩膜 + 边缘</span>
+            </div>
+          </article>
+
+          <!-- Wellbore Geology Prediction -->
+          <article class="nav-card">
+            <div class="top">
+              <div>
+                <h2 class="name">Wellbore Geology Prediction</h2>
+                <p class="desc" id="d_wellbore" data-t="desc_wellbore">
+                  井眼地质（TVT）连续曲线预测：多源测井特征 + 逐井泛化评估 + 集成与可解释分析。
+                </p>
+              </div>
+              <a class="chip primary" href="./projects/wellbore-geo/index.html" data-t="btn_open">打开</a>
+            </div>
+            <div class="chips">
+              <span class="chip small" data-t="chip_wb_logs">测井</span>
+              <span class="chip small" data-t="chip_wb_ens">集成</span>
+              <span class="chip small" data-t="chip_wb_reg">回归</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var zh = {
+          tag: "项目导航",
+          title: "项目目录",
+          subtitle: "项目导航",
+          themeDark: "暗色",
+          themeLight: "亮色",
+          lang: "EN",
+          btn_open: "打开",
+          desc_robo: "手术机器人专利临床转化潜力预测：专利文本特征 + 临床证据链 + 预测与可解释展示。",
+          desc_picguard: "扩散模型版权保护：通过对抗扰动降低风格/内容复刻能力。",
+          desc_breastus: "跨域乳腺超声良恶性诊断：冻结分类 ViT + 分割 ViT 权重复制 + UNet 解码器。",
+          desc_wellbore: "井眼地质（TVT）连续曲线预测：多源测井特征 + 逐井泛化评估 + 集成与可解释分析。",
+          chip_robo_nlp: "NLP",
+          chip_robo_patent: "专利",
+          chip_robo_tp: "转化潜力",
+          chip_pg_diff: "扩散",
+          chip_pg_adv: "对抗",
+          chip_pg_cr: "版权",
+          chip_bu_cd: "跨域",
+          chip_bu_vitunet: "ViT-UNet",
+          chip_bu_me: "掩膜 + 边缘",
+          chip_wb_logs: "测井",
+          chip_wb_ens: "集成",
+          chip_wb_reg: "回归",
+        };
+        var en = {
+          tag: "Project Navigation",
+          title: "Project Directory",
+          subtitle: "Navigation",
+          themeDark: "Dark",
+          themeLight: "Light",
+          lang: "中文",
+          btn_open: "Open",
+          desc_robo:
+            "Clinical translation potential prediction for surgical-robot patents: patent text features + clinical evidence chain + prediction & interpretability.",
+          desc_picguard:
+            "Copyright protection for diffusion models: adversarial perturbations that reduce style/content imitation.",
+          desc_breastus:
+            "Cross-domain breast ultrasound diagnosis: frozen ViT classifier + weight-copied ViT-UNet segmenter.",
+          desc_wellbore:
+            "Wellbore geology (TVT) curve prediction: multi-log features + per-well generalization + ensemble & interpretability.",
+          chip_robo_nlp: "NLP",
+          chip_robo_patent: "Patent",
+          chip_robo_tp: "Translation potential",
+          chip_pg_diff: "Diffusion",
+          chip_pg_adv: "Adversarial",
+          chip_pg_cr: "Copyright",
+          chip_bu_cd: "Cross-domain",
+          chip_bu_vitunet: "ViT-UNet",
+          chip_bu_me: "Mask + Edge",
+          chip_wb_logs: "Well logs",
+          chip_wb_ens: "Ensemble",
+          chip_wb_reg: "Regression",
+        };
+        var state = { lang: "zh" };
+
+        function labelTheme(btn) {
+          var cur = document.documentElement.getAttribute("data-theme") || "";
+          if (!cur) {
+            var sysDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+            btn.textContent = sysDark ? (state.lang === "zh" ? zh.themeDark : en.themeDark) : (state.lang === "zh" ? zh.themeLight : en.themeLight);
+            return;
+          }
+          btn.textContent = cur === "dark" ? (state.lang === "zh" ? zh.themeDark : en.themeDark) : (state.lang === "zh" ? zh.themeLight : en.themeLight);
+        }
+
+        function render() {
+          var dict = state.lang === "en" ? en : zh;
+          document.documentElement.setAttribute("lang", state.lang === "en" ? "en" : "zh-CN");
+          document.title = state.lang === "en" ? "Portfolio | Navigation" : "作品集｜项目导航";
+          document.getElementById("subTag").textContent = dict.tag;
+          document.getElementById("title").textContent = dict.title;
+          document.getElementById("subtitle").textContent = dict.subtitle;
+          document.getElementById("langBtn").textContent = dict.lang;
+          labelTheme(document.getElementById("themeBtn"));
+
+          // card-level i18n
+          document.querySelectorAll("[data-t]").forEach(function (el) {
+            var k = el.getAttribute("data-t");
+            if (k && Object.prototype.hasOwnProperty.call(dict, k)) el.textContent = dict[k];
+          });
+        }
+
+        function setTheme(next) {
+          if (next === "dark" || next === "light") {
+            document.documentElement.setAttribute("data-theme", next);
+            try { localStorage.setItem("site_theme", next); } catch (e) {}
+          }
+          render();
+        }
+
+        function wire() {
+          try {
+            var savedLang = localStorage.getItem("portfolio_lang");
+            if (savedLang === "en" || savedLang === "zh") state.lang = savedLang;
+          } catch (e) {}
+
+          var langBtn = document.getElementById("langBtn");
+          langBtn.addEventListener("click", function () {
+            state.lang = state.lang === "zh" ? "en" : "zh";
+            try { localStorage.setItem("portfolio_lang", state.lang); } catch (e) {}
+            render();
+          });
+
+          var themeBtn = document.getElementById("themeBtn");
+          themeBtn.addEventListener("click", function () {
+            var cur = document.documentElement.getAttribute("data-theme") || "";
+            if (!cur) {
+              var sysDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+              setTheme(sysDark ? "light" : "dark");
+              return;
+            }
+            setTheme(cur === "dark" ? "light" : "dark");
+          });
+
+          render();
+        }
+
+        document.addEventListener("DOMContentLoaded", wire);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>breast-us-mtl</title>
+<style>
+:root{--bg:#fbfbfc;--ink:#121826;--muted:rgba(18,24,38,.72);--line:rgba(18,24,38,.12);--panel:rgba(255,255,255,.78);--radius:18px;--max:980px;--mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--sans:ui-sans-serif,system-ui,-apple-system,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei","Segoe UI",sans-serif;--serif:ui-serif,"Songti SC","STSong","Noto Serif CJK SC",serif;}
+@media (prefers-color-scheme: dark){:root{--bg:#070a12;--ink:rgba(255,255,255,.92);--muted:rgba(255,255,255,.70);--line:rgba(255,255,255,.14);--panel:rgba(10,14,25,.72);}}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:linear-gradient(180deg,var(--bg),var(--bg));}
+.wrap{max-width:var(--max);margin:0 auto;padding:26px 18px 64px;}
+.top{display:flex;gap:10px;align-items:baseline;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px;}
+.top a{color:inherit;text-decoration:none;border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.4);}
+@media (prefers-color-scheme: dark){.top a{background:rgba(0,0,0,.18);}}
+.card{border:1px solid var(--line);border-radius:calc(var(--radius) + 6px);background:var(--panel);padding:22px;}
+h1,h2,h3,h4{font-family:var(--serif);letter-spacing:-.01em}
+h1{margin:0 0 10px;font-size:30px}
+h2{margin:22px 0 10px;font-size:20px}
+h3{margin:18px 0 8px;font-size:16px}
+p,li{color:var(--muted);line-height:1.75;font-size:14px}
+ul{padding-left:18px}
+code{font-family:var(--mono)}
+pre{margin:10px 0;padding:12px 12px 14px;border-radius:14px;border:1px solid var(--line);overflow:auto;background:rgba(255,255,255,.45);}
+@media (prefers-color-scheme: dark){pre{background:rgba(0,0,0,.18);}}
+hr{border:none;border-top:1px solid var(--line);margin:18px 0;}
+a{color:inherit}
+a:hover{color:#0a6cf0}
+</style>
+</head><body>
+<div class="wrap">
+<div class="top"><div><strong>breast-us-mtl</strong></div><a href="../index.html">← Back</a></div>
+<div class="card">
+<h1>乳腺超声恶性诊断：分割 + 边界 + 分类的多任务学习</h1>
+<p>&gt; <strong>定位一句话</strong>：通过跨设备/跨机构域偏移下的多任务学习，提升乳腺超声良恶性诊断的零样本泛化与可解释性，并完成 Web 可视化诊断系统部署。</p>
+<h2>0. Quick Facts</h2>
+<ul>
+<li><strong>时间</strong>：2026.05–至今</li>
+<li><strong>方向</strong>：医学影像 / 多任务学习 / 域泛化（域偏移）</li>
+<li><strong>你的角色</strong>：队长/核心成员（简历：队长/核心成员）</li>
+<li><strong>目标（简历）</strong>：应对跨设备/跨机构域偏移，提升乳腺超声恶性诊断在外部数据集上的零样本泛化能力</li>
+<li><strong>方法（简历）</strong>：</li>
+<li>Masked Pooling</li>
+<li>利用分割/边缘概率图作为空间注意力</li>
+<li>增强三集成策略，并完成 Web 可视化诊断系统部署</li>
+<li><strong>量化结果（简历）</strong>：</li>
+<li>外部数据集 BUSI / BreAST：零样本跨域分类 AUC 0.899 / 0.860</li>
+<li>内部 Dice 0.903</li>
+<li>分类 AUC 0.941</li>
+<li>模型参数量约 29.6M</li>
+</ul>
+<h2>1. 你需要补充/提供的原始材料</h2>
+<h3>P0</h3>
+<ul>
+<li>数据来源：内部/外部各自规模、预处理、划分（尤其“零样本跨域”如何设定）</li>
+<li>任务细节：分割/边界/分类三任务的标签与loss如何定义</li>
+<li>结果与对比：与哪些 baseline/现有方法比较（表格/图）</li>
+<li>Web 系统：界面截图、功能点、部署方式（本地/服务器）</li>
+</ul>
+<h3>P1</h3>
+<ul>
+<li>消融：Masked Pooling、空间注意力、集成策略各自贡献</li>
+<li>可解释性：注意力/边界/分割可视化与临床意义解释</li>
+</ul>
+</div></div></div></body></html>
